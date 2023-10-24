@@ -39,13 +39,7 @@ app.use(session(sessionOptions));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(
-  cors({
-    origin: [],
-    methods: ["POST", "GET"],
-    credentials: true,
-  })
-);
+app.use(cors());
 app.use(methodOverride("_method"));
 
 app.use(bodyParser.json());
