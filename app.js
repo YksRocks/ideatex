@@ -41,7 +41,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: [BASE_URL_BE],
+    origin: [],
     methods: ["POST", "GET"],
     credentials: true,
   })
