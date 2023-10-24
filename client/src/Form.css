@@ -1,0 +1,170 @@
+@import url(https://fonts.googleapis.com/css2?family=Pacifico&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600&family=Playfair+Display&family=Tilt+Neon&family=Young+Serif&display=swap);
+
+.Form {
+  /* pointer-events: none; */
+  font-family: "Tilt Neon", sans-serif;
+  color: gray;
+}
+
+.complete {
+  border: greenyellow 2px solid !important;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.complete:hover {
+  border: greenyellow 2px solid;
+  background-color: transparent;
+}
+/* 
+.complete::after {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background-image: conic-gradient(transparent, transparent, transparent, #d400d4);
+    animation: animate 4s linear infinite;
+    animation-delay: -2s;
+}
+.complete::before{
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background-image: conic-gradient(transparent,transparent,transparent,#00ccff);
+    animation: animate 4s linear infinite;
+}
+@keyframes animate{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+} */
+
+.rdd {
+  font-family: "Tilt Neon", sans-serif;
+  color: #adff2f;
+}
+.rdd:hover {
+  font-family: "Tilt Neon", sans-serif;
+  color: greenyellow;
+}
+
+.Form:hover {
+  color: #808080;
+}
+
+.RN {
+  font-family: "Pixelify Sans", sans-serif;
+}
+.RN p {
+  font-family: "Tilt Neon", sans-serif;
+}
+
+.rd {
+  font-family: "Tilt Neon", sans-serif;
+  border: solid 1px #646cff;
+}
+.rdd {
+  font-family: "Tilt Neon", sans-serif;
+}
+
+.mk {
+  font-family: "Tilt Neon", sans-serif;
+}
+.mkk {
+  font-family: "Tilt Neon", sans-serif;
+  border: solid 1px #646cff;
+}
+
+.tooltip {
+  position: relative;
+
+  /* making the .tooltip span a container for the tooltip text */
+  /* little indicater to indicate it's hoverable */
+}
+
+.tooltip:before {
+  content: attr(data-text);
+  /* here's the magic */
+  position: absolute;
+
+  /* vertically center */
+  top: 50%;
+  transform: translateY(-50%);
+
+  /* move to right */
+  left: 100%;
+  margin-left: 15px;
+  /* and add a small left margin */
+
+  /* basic styles */
+  width: 200px;
+  padding: 10px;
+  border-radius: 10px;
+  background: rgb(254 226 226);
+  color: rgb(185 28 28);
+  text-align: center;
+  font: 700;
+  border: 2px solid rgb(248 113 113);
+  display: none;
+  /* hide by default */
+}
+
+.tooltip:hover:before {
+  display: block;
+}
+
+.tooltip:after {
+  content: "";
+  position: absolute;
+
+  /* position tooltip correctly */
+  left: 100%;
+  margin-left: -5px;
+
+  /* vertically center */
+  top: 50%;
+  transform: translateY(-50%);
+
+  /* the arrow */
+  border: 10px solid #000;
+  border: 10px solid rgb(248 113 113);
+  border-color: transparent rgb(248 113 113) transparent transparent;
+
+  display: none;
+}
+
+.tooltip:hover:before,
+.tooltip:hover:after {
+  display: block;
+}
+
+.tooltip:before {
+  /* other styles */
+
+  /*  display:none; */
+
+  opacity: 0;
+  transition: 0.3s opacity;
+}
+
+.tooltip:hover:before {
+  opacity: 1;
+}
+
+.tooltip:after {
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.tooltip:hover:after {
+  opacity: 1;
+}
+
+/* ************************************************************ */
