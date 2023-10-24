@@ -39,7 +39,13 @@ app.use(session(sessionOptions));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+app.use(
+  cors({
+    origin: ["https://ideatexf.onrender.com"],
+    methods: ["POST", "GET"],
+    credentials: true,
+  })
+);
 app.use(methodOverride("_method"));
 
 app.use(bodyParser.json());
