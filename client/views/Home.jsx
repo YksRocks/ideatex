@@ -13,7 +13,7 @@ export default function Home() {
   axios.defaults.withCredentials = true;
   useEffect(() => {
     axios
-      .get(`${BASE_URL_FE}/`)
+      .get(`https://ideatex.onrender.com/`)
       .then((res) => {
         if (res.data.valid) {
           setValidd(true);

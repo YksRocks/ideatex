@@ -14,14 +14,14 @@ export default function Login() {
     e.preventDefault();
     try {
       await axios
-        .post(`${BASE_URL_FE}/login`, {
+        .post(`https://ideatex.onrender.com/login`, {
           email,
           password,
         })
         .then((res) => {
           if (res.data.exists == "exists") {
             history("/");
-          } else if (res.data == "notExists") {
+          } else if (res.data.exists == "notExists") {
             alert("Wrong Username or Password");
           }
         })

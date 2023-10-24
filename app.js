@@ -106,10 +106,10 @@ app.post("/login", async (req, res) => {
       req.session.s2 = user.s2;
       res.json({ exists: "exists", s1: user.s1, s2: user.s2 });
     } else {
-      res.json("notExists");
+      res.json({ exists: "notExists" });
     }
   } catch (error) {
-    res.json("notExists");
+    res.json({ exists: "notExists" });
   }
 });
 
