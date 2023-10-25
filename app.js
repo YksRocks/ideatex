@@ -51,7 +51,6 @@ app.use(methodOverride("_method"));
 app.use(bodyParser.json());
 
 app.get("/", async (req, res) => {
-  console.log(req.session.user);
   const user = await User.findOne({ email: req.session.user });
   if (req.session.user) {
     return res.json({
