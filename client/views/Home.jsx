@@ -4,7 +4,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import { useLocation, useNavigate } from "react-router-dom";
-import { BASE_URL_FE } from "../src/camponents/base";
+// import { BASE_URL_FE } from "../src/camponents/base";
+const BASE_URL_FE="https://ideatex.onrender.com";
 export default function Home() {
   const [validd, setValidd] = useState(false);
   const [s1, setS1] = useState(0);
