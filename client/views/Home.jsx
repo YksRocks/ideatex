@@ -16,6 +16,7 @@ export default function Home() {
     axios
       .get(`https://ideatex.onrender.com/`)
       .then((res) => {
+        console.log(res.data.valid);
         if (res.data.valid) {
           setValidd(true);
           setS1(res.data.s1);
