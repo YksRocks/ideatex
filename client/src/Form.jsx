@@ -6,7 +6,8 @@ import "./Form.css";
 import Lottie from "lottie-react";
 import lot1 from "./assets/animation_lnohzeew.json";
 import lot2 from "./assets/animation_lnqdwyru.json";
-import { BASE_URL_FE } from "./camponents/base";
+// import { BASE_URL_FE } from "./camponents/base";
+const BASE_URL_FE="https://ideatex.onrender.com";
 
 export default function Form({ validd, s1, s2 }) {
   const [buttonPopup, setButtonPopup] = useState(false);
