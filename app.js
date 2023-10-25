@@ -6,25 +6,25 @@ import methodOverride from "method-override";
 import User from "./models/users.js";
 import bodyParser from "body-parser";
 
-const dbUrl = process.env.DB_URL;
+// const dbUrl = process.env.DB_URL;
 const secret1 = process.env.SECRET;
 const BASE_URL_BE = process.env.BASE_URL_BE;
 
 import session from "express-session";
-import MongoStore from "connect-mongo";
+// import MongoStore from "connect-mongo";
 
-const store = new MongoStore({
-  mongoUrl: dbUrl,
-  secret: secret1,
-  touchAfter: 24 * 60 * 60,
-});
+// const store = new MongoStore({
+//   mongoUrl: dbUrl,
+//   secret: secret1,
+//   touchAfter: 24 * 60 * 60,
+// });
 
-store.on("error", function (e) {
-  console.log("Session Store Error", e);
-});
+// store.on("error", function (e) {
+//   console.log("Session Store Error", e);
+// });
 
 const sessionOptions = {
-  store,
+  // store,
   secret: secret1,
   resave: false,
   saveUninitialized: false,
@@ -41,7 +41,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: ["https://ideatexf.onrender.com"],
+    origin: [BASE_URL_BE],
     methods: ["POST", "GET"],
     credentials: true,
   })
@@ -51,6 +51,7 @@ app.use(methodOverride("_method"));
 app.use(bodyParser.json());
 
 app.get("/", async (req, res) => {
+  console.log(req.session.user);
   const user = await User.findOne({ email: req.session.user });
   if (req.session.user) {
     return res.json({
@@ -95,7 +96,6 @@ app.post("/updatee", async (req, res) => {
 
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
-
   try {
     const user = await User.findOne({
       $and: [{ email: email }, { password: password }],
@@ -106,10 +106,10 @@ app.post("/login", async (req, res) => {
       req.session.s2 = user.s2;
       res.json({ exists: "exists", s1: user.s1, s2: user.s2 });
     } else {
-      res.json({ exists: "notExists" });
+      res.json("notExists");
     }
   } catch (error) {
-    res.json({ exists: "notExists" });
+    res.json("notExists");
   }
 });
 
