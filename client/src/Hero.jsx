@@ -6,7 +6,8 @@ import "./Hero.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { BASE_URL_FE } from "./camponents/base";
+// import { BASE_URL_FE } from "./camponents/base";
+const BASE_URL_FE="https://ideatex.onrender.com";
 
 export default function Hero({ validd }) {
   const history = useNavigate();
