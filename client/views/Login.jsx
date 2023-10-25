@@ -2,7 +2,8 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
-import { BASE_URL_FE } from "../src/camponents/base";
+// import { BASE_URL_FE } from "../src/camponents/base";
+const BASE_URL_FE="https://ideatex.onrender.com";
 
 export default function Login() {
   const history = useNavigate();
