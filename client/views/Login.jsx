@@ -20,7 +20,6 @@ export default function Login() {
           password,
         })
         .then((res) => {
-          console.log(res.data.exists);
           if (res.data.exists == "exists") {
             history("/");
           } else if (res.data.exists == "notExists") {
