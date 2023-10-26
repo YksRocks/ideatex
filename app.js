@@ -11,24 +11,25 @@ const secret1 = process.env.SECRET;
 const BASE_URL_BE = process.env.BASE_URL_BE;
 
 import session from "express-session";
-// import MongoStore from "connect-mongo";
+import MongoStore from "connect-mongo";
 
-// const store = new MongoStore({
-//   mongoUrl: dbUrl,
-//   secret: secret1,
-//   touchAfter: 24 * 60 * 60,
-// });
+const store = new MongoStore({
+  mongoUrl: dbUrl,
+  secret: secret1,
+  touchAfter: 24 * 60 * 60,
+});
 
-// store.on("error", function (e) {
-//   console.log("Session Store Error", e);
-// });
+store.on("error", function (e) {
+  console.log("Session Store Error", e);
+});
 
 const sessionOptions = {
-  // store,
+  store,
   secret: secret1,
   resave: false,
   saveUninitialized: false,
   cookies: {
+    httpOnly: true,
     expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
     maxAge: 1000 * 60 * 60 * 24 * 7,
   },
