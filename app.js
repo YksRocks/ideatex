@@ -61,7 +61,7 @@ app.post("/", async (req, res) => {
       s2: user.s2,
     });
   } else {
-    return res.json({ valid: true });
+    return res.json({ valid: false });
   }
 });
 
