@@ -14,7 +14,7 @@ export default function Home() {
   axios.defaults.withCredentials = true;
   useEffect(() => {
     axios
-      .get(`https://ideatex.onrender.com/`)
+      .post(`https://ideatex.onrender.com/`)
       .then((res) => {
         if (res.data.valid) {
           setValidd(true);
