@@ -71,7 +71,7 @@ app.post("/login", async (req, res) => {
 });
 
 app.post("/", async (req, res) => {
-  console.log(req.session.user);
+  console.log(req.session);
   const user = await User.findOne({ email: req.session.user });
   if (req.session.user) {
     return res.json({
