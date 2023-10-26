@@ -27,7 +27,7 @@ const sessionOptions = {
   store,
   secret: secret1,
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
   cookies: {
     httpOnly: true,
     expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
