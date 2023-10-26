@@ -116,7 +116,7 @@ app.post("/updatee", async (req, res) => {
 
 
 app.post("/logout", (req, res) => {
-  req.session.user = null;
+  req.session.destroy();
   res.json("logedOut");
 });
 
