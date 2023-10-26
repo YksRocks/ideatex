@@ -100,8 +100,6 @@ app.post("/login", async (req, res) => {
     const user = await User.findOne({
       $and: [{ email: email }, { password: password }],
     });
-    console.log(user);
-    console.log(email);
     if (user) {
       req.session.user = email;
       req.session.s1 = user.s1;
