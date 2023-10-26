@@ -25,7 +25,7 @@ export default function Home() {
         }
       })
       .catch((e) => console.log(e));
-  }, [navigate]);
+  });
   return (
     <>
       {validd && (
