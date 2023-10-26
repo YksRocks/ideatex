@@ -50,7 +50,8 @@ app.use(methodOverride("_method"));
 
 app.use(bodyParser.json());
 
-app.get("/", async (req, res) => {
+app.post("/", async (req, res) => {
+  console.log(req.session.user);
   const user = await User.findOne({ email: req.session.user });
   if (req.session.user) {
     return res.json({
@@ -99,6 +100,8 @@ app.post("/login", async (req, res) => {
     const user = await User.findOne({
       $and: [{ email: email }, { password: password }],
     });
+    console.log(user);
+    console.log(email);
     if (user) {
       req.session.user = email;
       req.session.s1 = user.s1;
