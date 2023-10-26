@@ -6,7 +6,7 @@ import methodOverride from "method-override";
 import User from "./models/users.js";
 import bodyParser from "body-parser";
 
-// const dbUrl = process.env.DB_URL;
+const dbUrl = process.env.DB_URL;
 const secret1 = process.env.SECRET;
 const BASE_URL_BE = process.env.BASE_URL_BE;
 
