@@ -50,6 +50,26 @@ app.use(methodOverride("_method"));
 
 app.use(bodyParser.json());
 
+
+app.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const user = await User.findOne({
+      $and: [{ email: email }, { password: password }],
+    });
+    if (user) {
+      req.session.user = email;
+      req.session.s1 = user.s1;
+      req.session.s2 = user.s2;
+      res.json({ exists: "exists", s1: user.s1, s2: user.s2 });
+    } else {
+      res.json("notExists");
+    }
+  } catch (error) {
+    res.json("notExists");
+  }
+});
+
 app.post("/", async (req, res) => {
   console.log(req.session.user);
   const user = await User.findOne({ email: req.session.user });
@@ -94,24 +114,6 @@ app.post("/updatee", async (req, res) => {
   }
 });
 
-app.post("/login", async (req, res) => {
-  const { email, password } = req.body;
-  try {
-    const user = await User.findOne({
-      $and: [{ email: email }, { password: password }],
-    });
-    if (user) {
-      req.session.user = email;
-      req.session.s1 = user.s1;
-      req.session.s2 = user.s2;
-      res.json({ exists: "exists", s1: user.s1, s2: user.s2 });
-    } else {
-      res.json("notExists");
-    }
-  } catch (error) {
-    res.json("notExists");
-  }
-});
 
 app.post("/logout", (req, res) => {
   req.session.user = null;
