@@ -22,7 +22,7 @@ export default function Login() {
         .then((res) => {
           if (res.data.exists == "exists") {
             history("/");
-          } else if (res.data.exists == "notExists") {
+          } else if (res.data == "notExists") {
             alert("Wrong Username or Password");
           }
         })
