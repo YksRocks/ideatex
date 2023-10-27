@@ -12,6 +12,8 @@ const BASE_URL_BE = process.env.BASE_URL_BE;
 
 import session from "express-session";
 import MongoStore from "connect-mongo";
+
+app.enable('trust proxy')
 app.set("trust proxy", 1);
 
 const store = new MongoStore({
@@ -33,8 +35,9 @@ const sessionOptions = {
   proxy: true,
   name: 'MyCoolWebAppCookieName',
   cookies: {
-    sameSite:"none",
     httpOnly: true,
+    secure: true,
+    sameSite: 'none',
     expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
     maxAge: 1000 * 60 * 60 * 24 * 7,
   },
