@@ -28,6 +28,8 @@ const sessionOptions = {
   secret: secret1,
   resave: false,
   saveUninitialized: false,
+  proxy: true,
+  name: 'MyCoolWebAppCookieName',
   cookies: {
     sameSite:"none",
     httpOnly: true,
