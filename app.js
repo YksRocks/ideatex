@@ -12,6 +12,7 @@ const BASE_URL_BE = process.env.BASE_URL_BE;
 
 import session from "express-session";
 import MongoStore from "connect-mongo";
+app.set("trust proxy", 1);
 
 const store = new MongoStore({
   mongoUrl: dbUrl,
@@ -22,6 +23,7 @@ const store = new MongoStore({
 store.on("error", function (e) {
   console.log("Session Store Error", e);
 });
+
 
 const sessionOptions = {
   store,
