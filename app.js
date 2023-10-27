@@ -33,7 +33,6 @@ const sessionOptions = {
   resave: false,
   saveUninitialized: false,
   proxy: true,
-  name: 'MyCoolWebAppCookieName',
   cookies: {
     httpOnly: true,
     secure: true,
