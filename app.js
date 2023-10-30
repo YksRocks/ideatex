@@ -34,15 +34,7 @@ const sessionOptions = {
   resave: false,
   saveUninitialized: false,
   // proxy: true,
-  cookies: {
-    httpOnly: false,
-    secure: true,
-    sameSite: 'None',
-    path: '/',
-    domain: 'ideatex.onrender.com',
-    expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
-    maxAge: 1000 * 60 * 60 * 24 * 7,
-  },
+  
 };
 
 app.use(session(sessionOptions));
