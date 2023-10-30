@@ -14,8 +14,8 @@ const BASE_URL_BE = process.env.BASE_URL_BE;
 // import session from "express-session";
 // import MongoStore from "connect-mongo";
 
-app.enable('trust proxy')
-app.set("trust proxy", 1);
+// app.enable('trust proxy')
+// app.set("trust proxy", 1);
 
 // const store = new MongoStore({
 //   mongoUrl: dbUrl,
@@ -66,9 +66,9 @@ app.post("/login", async (req, res) => {
       $and: [{ email: email }, { password: password }],
     });
     if (user) {
-      res.cookie('user',email,{ maxAge: 1000 * 60 * 10, httpOnly: false, secure: false });
-      res.cookie('s1',user.s1,{ maxAge: 1000 * 60 * 10, httpOnly: false, secure: false  });
-      res.cookie('s2',user.s2,{ maxAge: 1000 * 60 * 10, httpOnly: false, secure: false });
+      res.cookie('user',email,{ maxAge: 1000 * 60 * 10, httpOnly: false, secure: true });
+      res.cookie('s1',user.s1,{ maxAge: 1000 * 60 * 10, httpOnly: false, secure: true  });
+      res.cookie('s2',user.s2,{ maxAge: 1000 * 60 * 10, httpOnly: false, secure: true });
       res.json({ exists: "exists", s1: user.s1, s2: user.s2 });
     } else {
       res.json("notExists");
