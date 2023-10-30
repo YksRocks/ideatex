@@ -125,7 +125,9 @@ app.post("/updatee", async (req, res) => {
 
 
 app.post("/logout", (req, res) => {
-  req.session.destroy();
+  for (const cookieName in req.cookies) {
+    res.cookie(cookieName, '', { expires: new Date(0) });
+  }
   res.json("logedOut");
 });
 
