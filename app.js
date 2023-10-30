@@ -37,7 +37,7 @@ const sessionOptions = {
   cookies: {
     httpOnly: false,
     secure: true,
-    SameSite: 'None',
+    sameSite: 'None',
     path: '/',
     domain: 'ideatex.onrender.com',
     expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
@@ -47,7 +47,7 @@ const sessionOptions = {
 };
 
 app.use(session(sessionOptions));
-// app.use(cookieParser(secret1));
+app.use(cookieParser(secret1));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
