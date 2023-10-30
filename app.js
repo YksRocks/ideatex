@@ -11,39 +11,39 @@ const dbUrl = process.env.DB_URL;
 const secret1 = process.env.SECRET;
 const BASE_URL_BE = process.env.BASE_URL_BE;
 
-import session from "express-session";
-import MongoStore from "connect-mongo";
+// import session from "express-session";
+// import MongoStore from "connect-mongo";
 
 app.enable('trust proxy')
 app.set("trust proxy", 1);
 
-const store = new MongoStore({
-  mongoUrl: dbUrl,
-  secret: secret1,
-  touchAfter: 24 * 60 * 60,
-});
+// const store = new MongoStore({
+//   mongoUrl: dbUrl,
+//   secret: secret1,
+//   touchAfter: 24 * 60 * 60,
+// });
 
-store.on("error", function (e) {
-  console.log("Session Store Error", e);
-});
+// store.on("error", function (e) {
+//   console.log("Session Store Error", e);
+// });
 
 
-const sessionOptions = {
-  store,
-  secret: secret1,
-  resave: false,
-  saveUninitialized: false,
-  proxy: true,
-  cookies: {
-    httpOnly: true,
-    secure: true,
-    sameSite: 'none',
-    expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
-    maxAge: 1000 * 60 * 60 * 24 * 7,
-  },
-};
+// const sessionOptions = {
+//   store,
+//   secret: secret1,
+//   resave: false,
+//   saveUninitialized: false,
+//   proxy: true,
+//   cookies: {
+//     httpOnly: true,
+//     secure: true,
+//     sameSite: 'none',
+//     expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+//     maxAge: 1000 * 60 * 60 * 24 * 7,
+//   },
+// };
 
-app.use(session(sessionOptions));
+// app.use(session(sessionOptions));
 app.use(cookieParser(secret1));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -54,10 +54,10 @@ app.use(
     credentials: true,
   })
 );
+
 app.use(methodOverride("_method"));
 
 app.use(bodyParser.json());
-
 
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
@@ -66,7 +66,6 @@ app.post("/login", async (req, res) => {
       $and: [{ email: email }, { password: password }],
     });
     if (user) {
-       
       res.cookie('user',email,{ maxAge: 1000 * 60 * 10, httpOnly: false });
       res.cookie('s1',user.s1,{ maxAge: 1000 * 60 * 10, httpOnly: false });
       res.cookie('s2',user.s2,{ maxAge: 1000 * 60 * 10, httpOnly: false });
