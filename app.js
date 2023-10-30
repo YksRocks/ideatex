@@ -37,7 +37,7 @@ const sessionOptions = {
   cookies: {
     httpOnly: false,
     secure: true,
-    sameSite: 'none',
+    sameSite: 'None',
     path: '/',
     domain: 'ideatex.onrender.com',
     expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
