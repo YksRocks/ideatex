@@ -34,6 +34,8 @@ const sessionOptions = {
   resave: false,
   saveUninitialized: false,
   // proxy: true,
+  secure:true,
+  sameSite:'None',
   
 };
 
