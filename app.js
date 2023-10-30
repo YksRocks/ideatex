@@ -66,9 +66,9 @@ app.post("/login", async (req, res) => {
       $and: [{ email: email }, { password: password }],
     });
     if (user) {
-      res.cookie('user',email,{ maxAge: 1000 * 60 * 10, httpOnly: false, secure: true,path: '/',domain: 'ideatex.onrender.com' });
-      res.cookie('s1',user.s1,{ maxAge: 1000 * 60 * 10, httpOnly: false, secure: true,path: '/',domain: 'ideatex.onrender.com'});
-      res.cookie('s2',user.s2,{ maxAge: 1000 * 60 * 10, httpOnly: false, secure: true,path: '/',domain: 'ideatex.onrender.com' });
+      res.cookie('user',email,{ maxAge: 1000 * 60 * 10, httpOnly: false, secure: true,path: '/',domain: 'ideatex.onrender.com',sameSite: 'None'});
+      res.cookie('s1',user.s1,{ maxAge: 1000 * 60 * 10, httpOnly: false, secure: true,path: '/',domain: 'ideatex.onrender.com',sameSite: 'None'});
+      res.cookie('s2',user.s2,{ maxAge: 1000 * 60 * 10, httpOnly: false, secure: true,path: '/',domain: 'ideatex.onrender.com',sameSite: 'None' });
       res.json({ exists: "exists", s1: user.s1, s2: user.s2 });
     } else {
       res.json("notExists");
