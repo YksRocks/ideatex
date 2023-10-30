@@ -101,7 +101,7 @@ app.post("/", async (req, res) => {
 app.post("/update", async (req, res) => {
   const { s1, s222 } = req.body;
   try {
-    const user = await User.findOne({ email: req.cookies.user });
+    const user = await User.findOne({ email: req.session.user });
     if (user) {
       user.s1 = s1;
       user.s2 = s222;
@@ -115,7 +115,7 @@ app.post("/update", async (req, res) => {
 app.post("/updatee", async (req, res) => {
   const { s111, s2 } = req.body;
   try {
-    const user = await User.findOne({ email: req.cookies.user });
+    const user = await User.findOne({ email:req.session.user });
     if (user) {
       user.s1 = s111;
       user.s2 = s2;
