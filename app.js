@@ -80,7 +80,6 @@ app.post("/login", async (req, res) => {
 
 app.post("/", async (req, res) => {
   const {user,s1,s2}=req.cookies;
-  console.log(req.cookies);
   if (req.cookies.user) {
     const user = await User.findOne({ email: req.cookies.user });
     return res.json({
