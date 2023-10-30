@@ -27,20 +27,20 @@ export default function Hero({ validd }) {
   return (
     <>
       <div className=" flex flex-row justify-between items-center">
-        <Link href="https://e-cell.in/" target="_blank" rel="noreferrer">
+        <a href="https://e-cell.in/" target="_blank" rel="noreferrer">
           <img
             src={eCellLogo}
             alt="E-Cell logo"
             className="w-[60px] h-[60px]"
           />
-        </Link>
+        </a>
         {/* <h1 className=" ideathon underline text-10xl">IdeateX</h1> */}
         <img
           src={ideateXLogo}
           alt="ideateX logo"
           className="w-[35px] h-[50px]"
         />
-        <Link href={validd ? "" : "/login"}>
+        <a href={validd ? "" : "/login"}>
           {validd ? (
             <form action="/logout" method="post">
               {/* <button type="submit" onClick={handleLogout}>
@@ -58,7 +58,7 @@ export default function Hero({ validd }) {
           ) : (
             <button>Login</button>
           )}
-        </Link>
+        </a>
       </div>
       <section className="container px-0 flex  w-full">
         <div className="flex flex-col md:flex-row items-center content">
@@ -81,7 +81,7 @@ export default function Hero({ validd }) {
                   the birthplace of future industry leaders.
                 </p>
                 <div className="mt-5">
-                  <Link
+                  <a
                     href="https://e-cell.in/contactus"
                     target="_blank"
                     rel="noreferrer"
@@ -92,8 +92,8 @@ export default function Hero({ validd }) {
                         <span className="button_text">Brochure </span>
                       </span>
                     </button>
-                  </Link>
-                  <Link
+                  </a>
+                  <a
                     href="https://e-cell.in/contactus"
                     target="_blank"
                     rel="noreferrer"
@@ -105,7 +105,7 @@ export default function Hero({ validd }) {
                         <span className="button_text">Contact Us</span>
                       </span>
                     </button>
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>
