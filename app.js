@@ -34,7 +34,7 @@ const sessionOptions = {
   resave: false,
   saveUninitialized: false,
   // proxy: true,
-  cookies: {
+  cookie: {
     httpOnly: false,
     secure: true,
     sameSite: 'None',
