@@ -80,7 +80,7 @@ export default function Form({ validd, s1, s2 }) {
             }
           >
             <div className="flex flex-row items-center">
-              <Link
+              <a
                 onClick={handleFirstClick}
                 href={
                   s1
@@ -95,7 +95,7 @@ export default function Form({ validd, s1, s2 }) {
                 className={s1 ? "rdd" : isFirstClicked ? "rdd" : "rddd"}
               >
                 {"Step 1 ->  "}Register on devfolio{" "}
-              </Link>
+              </a>
               {s1 ? (
                 <span style={{ display: "inline" }}>
                   <Lottie
@@ -130,7 +130,7 @@ export default function Form({ validd, s1, s2 }) {
             }
           >
             <div className="flex flex-row items-center">
-              <Link
+              <a
                 onClick={isFirstClicked ? () => handleSecondClick() : ""}
                 href={
                   s2
@@ -154,7 +154,7 @@ export default function Form({ validd, s1, s2 }) {
                 }
               >
                 {"Step 2 ->  "}Give test on krayon
-              </Link>
+              </a>
               {s2 ? (
                 <span style={{ display: "inline" }}>
                   <Lottie
