@@ -44,7 +44,7 @@ const sessionOptions = {
 };
 
 app.use(session(sessionOptions));
-app.use(cookieParser(secret1))
+app.use(cookieParser(secret1));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
