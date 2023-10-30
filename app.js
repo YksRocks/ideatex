@@ -61,18 +61,15 @@ app.use(bodyParser.json());
 
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
-  console.log(email,password);
   try {
     const user = await User.findOne({
       $and: [{ email: email }, { password: password }],
     });
     if (user) {
-      // req.session.user = email;
-      // req.session.s1 = user.s1;
-      // req.session.s2 = user.s2;
-      res.cookie('user',email,{signed:true});
-      res.cookie('s1',user.s1,{signed:true});
-      res.cookie('s2',user.s2,{signed:true});
+       
+      res.cookie('user',email);
+      res.cookie('s1',user.s1);
+      res.cookie('s2',user.s2);
       res.json({ exists: "exists", s1: user.s1, s2: user.s2 });
     } else {
       res.json("notExists");
@@ -83,13 +80,13 @@ app.post("/login", async (req, res) => {
 });
 
 app.post("/", async (req, res) => {
-  const {user,s1,s2}=req.signedCookies;
-  console.log(req.signedCookies);
-  if (req.signedCookies.user) {
-    const user = await User.findOne({ email: req.signedCookies.user });
+  const {user,s1,s2}=req.cookies;
+  console.log(req.cookies);
+  if (req.cookies.user) {
+    const user = await User.findOne({ email: req.cookies.user });
     return res.json({
       valid: true,
-      user: req.signedCookies.user,
+      user: req.cookies.user,
       s1: user.s1,
       s2: user.s2,
     });
