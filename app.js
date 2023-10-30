@@ -67,9 +67,9 @@ app.post("/login", async (req, res) => {
       $and: [{ email: email }, { password: password }],
     });
     if (user) {
-      req.session.user = email;
-      req.session.s1 = user.s1;
-      req.session.s2 = user.s2;
+      // req.session.user = email;
+      // req.session.s1 = user.s1;
+      // req.session.s2 = user.s2;
       res.cookie('user',email,{signed:true});
       res.cookie('s1',user.s1,{signed:true});
       res.cookie('s2',user.s2,{signed:true});
@@ -84,6 +84,7 @@ app.post("/login", async (req, res) => {
 
 app.post("/", async (req, res) => {
   const {user,s1,s2}=req.signedCookies;
+  console.log(req.signedCookies);
   if (req.signedCookies.user) {
     const user = await User.findOne({ email: req.signedCookies.user });
     return res.json({
