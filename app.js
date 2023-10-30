@@ -5,6 +5,7 @@ import cors from "cors";
 import methodOverride from "method-override";
 import User from "./models/users.js";
 import bodyParser from "body-parser";
+import cookieParser from "cookie-parser";
 
 const dbUrl = process.env.DB_URL;
 const secret1 = process.env.SECRET;
@@ -43,7 +44,7 @@ const sessionOptions = {
 };
 
 app.use(session(sessionOptions));
-
+app.use(cookieParser(secret1))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
@@ -65,6 +66,9 @@ app.post("/login", async (req, res) => {
       $and: [{ email: email }, { password: password }],
     });
     if (user) {
+      res.cookie('user',email,{signed:true});
+      res.cookie('s1',s1,{signed:true});
+      res.cookie('s2',s2,{signed:true});
       req.session.user = email;
       req.session.s1 = user.s1;
       req.session.s2 = user.s2;
@@ -78,12 +82,12 @@ app.post("/login", async (req, res) => {
 });
 
 app.post("/", async (req, res) => {
-  console.log(req.session);
-  const user = await User.findOne({ email: req.session.user });
-  if (req.session.user) {
+  const {user,s1,s2}=req.signedCookies;
+  if (req.signedCookies.user) {
+    const user = await User.findOne({ email: req.signedCookies.user });
     return res.json({
       valid: true,
-      user: req.session.user,
+      user: req.signedCookies.user,
       s1: user.s1,
       s2: user.s2,
     });
