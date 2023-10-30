@@ -67,9 +67,9 @@ app.post("/login", async (req, res) => {
     });
     if (user) {
        
-      res.cookie('user',email);
-      res.cookie('s1',user.s1);
-      res.cookie('s2',user.s2);
+      res.cookie('user',email,{ maxAge: 1000 * 60 * 10, httpOnly: false });
+      res.cookie('s1',user.s1,{ maxAge: 1000 * 60 * 10, httpOnly: false });
+      res.cookie('s2',user.s2,{ maxAge: 1000 * 60 * 10, httpOnly: false });
       res.json({ exists: "exists", s1: user.s1, s2: user.s2 });
     } else {
       res.json("notExists");
