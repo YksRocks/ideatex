@@ -36,8 +36,8 @@ const sessionOptions = {
   // proxy: true,
   cookies: {
     httpOnly: false,
-    sameSite: 'none',
     secure: true,
+    sameSite: 'None',
     path: '/',
     domain: 'ideatex.onrender.com',
     expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
