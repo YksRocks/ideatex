@@ -61,17 +61,18 @@ app.use(bodyParser.json());
 
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
+  console.log(email,password);
   try {
     const user = await User.findOne({
       $and: [{ email: email }, { password: password }],
     });
     if (user) {
-      res.cookie('user',email,{signed:true});
-      res.cookie('s1',s1,{signed:true});
-      res.cookie('s2',s2,{signed:true});
       req.session.user = email;
       req.session.s1 = user.s1;
       req.session.s2 = user.s2;
+      res.cookie('user',email,{signed:true});
+      res.cookie('s1',user.s1,{signed:true});
+      res.cookie('s2',user.s2,{signed:true});
       res.json({ exists: "exists", s1: user.s1, s2: user.s2 });
     } else {
       res.json("notExists");
