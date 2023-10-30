@@ -34,8 +34,15 @@ const sessionOptions = {
   resave: false,
   saveUninitialized: false,
   // proxy: true,
-  secure:true,
-  sameSite:'None',
+  cookies: {
+    httpOnly: false,
+    secure: true,
+    SameSite: 'None',
+    path: '/',
+    domain: 'ideatex.onrender.com',
+    expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+    maxAge: 1000 * 60 * 60 * 24 * 7,
+  },
   
 };
 
