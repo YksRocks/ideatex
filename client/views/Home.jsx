@@ -8,7 +8,9 @@ import HashLoader from "react-spinners/HashLoader";
 // import { BASE_URL_FE } from "../src/camponents/base";
 const BASE_URL_FE="https://ideatex.onrender.com";
 export default function Home() {
+  const color = "#646cff";
   const [validd, setValidd] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [s1, setS1] = useState(0);
   const [s2, setS2] = useState(0);
   const navigate = useNavigate();
