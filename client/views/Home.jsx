@@ -36,15 +36,17 @@ export default function Home() {
   return (
     <>
       {validd && (
-              <div>
-                <Hero validd={validd} />
-              </div>
-              <div>
-                <main>
-                  <Form validd={validd} s1={s1} s2={s2} />
-                </main>
-              </div>
-          )}
+        <div>
+          <div>
+            <Hero validd={validd} />
+          </div>
+          <div>
+            <main>
+              <Form validd={validd} s1={s1} s2={s2} />
+            </main>
+          </div>
+        </div>
+      )}
     </>
   );
 }
